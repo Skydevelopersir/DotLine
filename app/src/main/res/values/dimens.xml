@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="bigger_margin_size">18dp</dimen>
+    <dimen name="big_margin_size">16dp</dimen>
+    <dimen name="small_margin_size">8dp</dimen>
+
+    <dimen name="corners_radius">5dp</dimen>
+    <dimen name="action_button_size">32dp</dimen>
+
+    <dimen name="text_size_28sp">28sp</dimen>
+    <dimen name="text_size_26sp">26sp</dimen>
+    <dimen name="text_size_24sp">24sp</dimen>
+    <dimen name="text_size_22sp">22sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+
+</resources>
