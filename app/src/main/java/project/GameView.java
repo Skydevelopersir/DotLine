@@ -161,7 +161,7 @@ public class GameView extends View {
         offsetY = (screenHeight - boxHeight) / 2;
     }
 
-    public void reset() {
+    public void resetGame() {
         player1score = 0;
         player2score = 0;
 
