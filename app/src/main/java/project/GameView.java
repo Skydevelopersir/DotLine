@@ -127,7 +127,7 @@ public class GameView extends View {
         State.playerScores[1] = 0;
 
         Debug.isDebugMode = false;
-        State.isSide1 = true;
+        State.isPlayer1 = true;
 
         State.isGameOver = false;
 
@@ -158,7 +158,7 @@ public class GameView extends View {
 
 
     private int getPlayerIndex() {
-        return State.isSide1 ? 1 : 2;
+        return State.isPlayer1 ? 1 : 2;
     }
 
 
@@ -409,7 +409,7 @@ public class GameView extends View {
 
         // if switching side required
         if (mustPlayerNextPlayer) {
-            State.isSide1 = !State.isSide1;
+            State.isPlayer1 = !State.isPlayer1;
         }
     }
 
