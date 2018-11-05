@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">DotLine</string>
     <string name="reset_game">Reset Game</string>
+    <string name="game_is_drawn">Game is Drawn</string>
+    <string name="won_the_game">Won The Game.</string>
 </resources>

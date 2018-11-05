@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //gameView.resetGame();
-                Toast.makeText(MainActivity.this, "Game Reset", Toast.LENGTH_SHORT).show();
+                gameView.reset();
             }
         });
     }
