@@ -1,8 +1,11 @@
 package project.game;
 
-public class Options {
-    public static int cols = 4;
-    public static int rows = 4;
+import ir.skydevelopers.app.project.R;
+import project.G;
 
-    public static String[] playerNames = new String[]{"Player 1", "Player 2"};
+public class Options {
+    public static int cols = 6;
+    public static int rows = 6;
+
+    public static String[] playerNames = new String[]{G.resources.getString(R.string.player_1), G.resources.getString(R.string.player_2)};
 }

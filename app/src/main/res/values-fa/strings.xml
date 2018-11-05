@@ -4,4 +4,6 @@
     <string name="reset_game">بازی مجدد</string>
     <string name="game_is_drawn">بازی مساوی شد</string>
     <string name="won_the_game">بازی را برد.</string>
+    <string name="player_1">بازیکن 1</string>
+    <string name="player_2">بازیکن 2</string>
 </resources>
