@@ -14,6 +14,14 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import ir.skydevelopers.app.project.R;
+import project.game.Box;
+import project.game.Debug;
+import project.game.Diff;
+import project.game.Line;
+import project.game.Options;
+import project.game.Position;
+import project.game.State;
+import project.game.Theme;
 
 
 public class GameView extends View {
@@ -37,91 +45,8 @@ public class GameView extends View {
     private float touchX;
     private float touchY;
 
-
-    private static class Theme {
-        private static int[] playerColors = new int[]{Color.parseColor("#4444ff"), Color.parseColor("#ff4444")};
-        private static int space = 150;
-        private static int radius = 15;
-        private static int backgroundColor = Color.parseColor("#222222");
-    }
-
-
-    private static class State {
-        private static int[] playerScores = new int[]{0, 0};
-
-        private static boolean isGameOver = false;
-        private static boolean isSide1 = true;
-        private static ArrayList<Line> lines = new ArrayList<>();
-        private static ArrayList<Box> boxes = new ArrayList<>();
-    }
-
-
-    private static class Options {
-        private static int cols = 4;
-        private static int rows = 4;
-
-        private static String[] playerNames = new String[]{"Player 1", "Player 2"};
-    }
-
-
-    private static class Debug {
-        private static boolean isDebugMode = true;
-        private static boolean drawTouch = false;
-        private static boolean drawDotNames = false;
-    }
-
-
-    private static class Position {
-        public int x;
-        public int y;
-
-        public Position(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
-
-    private static class Diff {
-        public int i;
-        public int j;
-        public Float diff;
-
-        public Diff(int i, int j, float diff) {
-            this.i = i;
-            this.j = j;
-            this.diff = diff;
-        }
-    }
-
-
-    private static class Box {
-        public int i;
-        public int j;
-        public int playerIndex;
-
-        public Box(int i, int j) {
-            this.i = i;
-            this.j = j;
-        }
-    }
-
-
-    private static class Line {
-        public int i1;
-        public int j1;
-        public int i2;
-        public int j2;
-        public int playerIndex;
-
-        public Line(int i1, int j1, int i2, int j2, int playerIndex) {
-            this.i1 = i1;
-            this.j1 = j1;
-            this.i2 = i2;
-            this.j2 = j2;
-            this.playerIndex = playerIndex;
-        }
-    }
+    public static ArrayList<Line> lines = new ArrayList<>();
+    public static ArrayList<Box> boxes = new ArrayList<>();
 
 
     public GameView(Context context) {
@@ -206,15 +131,15 @@ public class GameView extends View {
 
         State.isGameOver = false;
 
-        State.lines.clear();
-        State.boxes.clear();
+        lines.clear();
+        boxes.clear();
 
         refresh();
     }
 
 
     private void refresh() {
-        if (State.boxes.size() == (Options.cols - 1) * (Options.rows - 1)) {
+        if (boxes.size() == (Options.cols - 1) * (Options.rows - 1)) {
             State.isGameOver = true;
         }
 
@@ -288,7 +213,7 @@ public class GameView extends View {
 
 
     private void drawConnectedLines(Canvas canvas) {
-        for (Line line : State.lines) {
+        for (Line line : lines) {
             drawLine(canvas, line);
         }
     }
@@ -303,7 +228,7 @@ public class GameView extends View {
 
 
     private void drawBoxes(Canvas canvas) {
-        for (Box box : State.boxes) {
+        for (Box box : boxes) {
             paintBox.setColor(getPlayerColor(box.playerIndex));
             Position boxPos = getPointPoisition(box.i, box.j);
             canvas.drawCircle(boxPos.x + Theme.space / 2, boxPos.y - Theme.space / 2, 30, paintBox);
@@ -462,7 +387,7 @@ public class GameView extends View {
         }
 
         // if this line is already connected
-        for (Line line : State.lines) {
+        for (Line line : lines) {
             if (line.i1 == firstPoint.i && line.j1 == firstPoint.j && line.i2 == secondPoint.i && line.j2 == secondPoint.j) {
                 return;
             }
@@ -470,7 +395,7 @@ public class GameView extends View {
 
         // add line to list of connected lines
         Line line = new Line(firstPoint.i, firstPoint.j, secondPoint.i, secondPoint.j, getPlayerIndex());
-        State.lines.add(line);
+        lines.add(line);
 
         // check if player get award
         boolean wonBox1 = checkBox(box1);
@@ -498,7 +423,7 @@ public class GameView extends View {
         boolean hasTop = false;
         boolean hasBottom = false;
 
-        for (Line line : State.lines) {
+        for (Line line : lines) {
             if (line.i1 == i && line.j1 == j && line.i2 == i && line.j2 == j + 1) {
                 hasLeft = true;
             }
@@ -519,7 +444,7 @@ public class GameView extends View {
         boolean isFullConnected = hasLeft && hasRight && hasTop && hasBottom;
         if (isFullConnected) {
             box.playerIndex = getPlayerIndex();
-            State.boxes.add(box);
+            boxes.add(box);
 
             increasePlayerScore(box.playerIndex);
             return true;
