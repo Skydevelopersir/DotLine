@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="reset_game">Reset Game</string>
-    <string name="game_is_drawn">Game is Drawn</string>
-    <string name="won_the_game">Won The Game.</string>
+    <string name="app_name">نقطه خط</string>
+    <string name="reset_game">بازی مجدد</string>
+    <string name="game_is_drawn">بازی مساوی شد</string>
+    <string name="won_the_game">بازی را برد.</string>
 </resources>
