@@ -294,9 +294,9 @@ public class GameView extends View {
         if (getPlayerScore(1) == getPlayerScore(2)) {
             message = G.context.getString(R.string.game_is_drawn);
         } else if (getPlayerScore(1) > getPlayerScore(2)) {
-            message = getPlayerName(1) + G.context.getString(R.string.won_the_game);
+            message = getPlayerName(1) +" "+ G.context.getString(R.string.won_the_game);
         } else {
-            message = getPlayerName(2) + G.context.getString(R.string.won_the_game);
+            message = getPlayerName(2) +" "+ G.context.getString(R.string.won_the_game);
         }
 
         return message;
