@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if ((System.currentTimeMillis() - timePassMillies) > 2000) {
-            Snackbar.make(gameView, "Please Press Back Again To Exit", 2000).show();
+            Snackbar.make(gameView, R.string.press_back_again_to_exit, 2000).show();
             timePassMillies = System.currentTimeMillis();
         } else {
             super.onBackPressed();
