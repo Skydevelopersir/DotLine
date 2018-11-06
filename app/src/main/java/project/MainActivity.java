@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 gameView.resetGame();
             }
         });
+        gameView.resetGame();
     }
 
     @Override
