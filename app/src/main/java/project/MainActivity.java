@@ -3,6 +3,7 @@ package project;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -15,8 +16,10 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnReset;
-    GameView gameView;
+    private Button btnReset;
+    private GameView gameView;
+    private long timePassMillies = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,24 +48,14 @@ public class MainActivity extends AppCompatActivity {
         gameView =findViewById(R.id.gameview);
     }
 
-    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
+        if ((System.currentTimeMillis()-timePassMillies)>2000){
+            Snackbar.make(gameView,"Please Press Back Again To Exit",2000).show();
+            timePassMillies=System.currentTimeMillis();
+        }else{
             super.onBackPressed();
-            return;
         }
-
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
     }
 }
