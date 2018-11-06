@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -134,7 +135,6 @@ public class GameView extends View {
 
         Debug.isDebugMode = false;
         State.isPlayer1 = true;
-
         State.isGameOver = false;
 
         lines.clear();
@@ -287,7 +287,11 @@ public class GameView extends View {
 
 
     private void drawFinishMessage(Canvas canvas) {
-        canvas.drawText(getGameFinishMessage(), screenWidthHalf, getHeight() - 100, paintText);
+
+        if(State.isGameOver){
+            canvas.drawText(getGameFinishMessage(), screenWidthHalf, getHeight() - 100, paintText);
+            Snackbar.make(MainActivity.gameView,getGameFinishMessage(), 2000).show();
+        }
     }
 
 
@@ -331,6 +335,7 @@ public class GameView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
         if (State.isGameOver) {
             return true;
         }
@@ -349,6 +354,8 @@ public class GameView extends View {
 
         connectLine(diff1.point, diff2.point);
         refresh();
+
+
 
         return super.onTouchEvent(event);
     }
@@ -465,6 +472,7 @@ public class GameView extends View {
             }, 500);
         }
     }
+
 
     private int getRandom(int min, int max) {
         return (int) Math.floor(Math.random() * (max - min + 1)) + min;

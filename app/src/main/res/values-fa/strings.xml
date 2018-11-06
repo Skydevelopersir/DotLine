@@ -7,4 +7,5 @@
     <string name="player_1">بازیکن 1</string>
     <string name="player_2">بازیکن 2</string>
     <string name="press_back_again_to_exit">لطفا برای خروج دوباره دکمه بازگشت را لمس کنید.</string>
+    <string name="new_game_was_built">بازی جدید ساخته شد.</string>
 </resources>

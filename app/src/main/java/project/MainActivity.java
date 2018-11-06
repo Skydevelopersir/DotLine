@@ -17,7 +17,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class MainActivity extends AppCompatActivity {
 
     Button btnReset;
-    GameView gameView;
+    public static GameView gameView;
     private long timePassMillies = 0;
 
     @Override
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gameView.resetGame();
+                Snackbar.make(gameView,R.string.new_game_was_built, 2000).show();
             }
         });
         gameView.resetGame();
