@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
@@ -17,6 +18,7 @@ public class G extends Application{
     public static Context context;
     public static Resources resources;
     public static DisplayMetrics displayMetrics;
+    public static Handler handler;
 
     @Override
     public void onCreate() {
@@ -24,6 +26,8 @@ public class G extends Application{
         context=getApplicationContext();
         resources = context.getResources();
         displayMetrics = resources.getDisplayMetrics();
+        handler = new Handler();
+
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/IRANSans.ttf")
                 .setFontAttrId(R.attr.fontPath)
